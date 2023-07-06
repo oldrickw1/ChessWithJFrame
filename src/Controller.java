@@ -9,5 +9,6 @@ public class Controller {
 
 
     public void run() {
+        view.config();
     }
 }

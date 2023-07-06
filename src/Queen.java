@@ -1,10 +1,14 @@
+import java.util.List;
+
 public class Queen extends Piece{
-    public Queen(int id, boolean isWhite, Coordinate position) {
-        super(id, isWhite, position);
+    public Queen(boolean isWhite) {
+        super(isWhite);
     }
 
     @Override
-    public void takeStep() {
-
+    public List<Coordinate> getAllSteps() {
+        return null;
     }
+
+
 }

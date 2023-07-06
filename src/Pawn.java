@@ -1,10 +1,18 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pawn extends Piece {
-    public Pawn(int id, boolean isWhite, Coordinate position) {
-        super(id, isWhite, position);
+    public Pawn(boolean isWhite) {
+        super(isWhite);
     }
 
     @Override
-    public void takeStep() {
-
+    public List<Coordinate> getAllSteps() {
+        return new ArrayList<>(List.of(
+                new Coordinate(getRow() + 1, getColumn()),
+                new Coordinate(getRow() + 2, getColumn())
+        ));
     }
+
+
 }

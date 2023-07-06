@@ -1,10 +1,10 @@
 public class Coordinate {
     private int row;
-    private char col;
+    private int column;
 
-    public Coordinate(int row, char col) {
+    public Coordinate(int row, int column) {
         this.row = row;
-        this.col = col;
+        this.column = column;
     }
 
     public int getRow() {
@@ -15,11 +15,11 @@ public class Coordinate {
         this.row = row;
     }
 
-    public char getCol() {
-        return col;
+    public int getColumn() {
+        return column;
     }
 
-    public void setCol(char col) {
-        this.col = col;
+    public void setColumn(int column) {
+        this.column = column;
     }
 }

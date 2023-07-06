@@ -1,11 +1,15 @@
+import java.util.List;
+
 public class Knight extends Piece {
 
-    public Knight(int id, boolean isWhite, Coordinate position) {
-        super(id, isWhite, position);
+    public Knight(boolean isWhite) {
+        super(isWhite);
     }
 
     @Override
-    public void takeStep() {
-
+    public List<Coordinate> getAllSteps() {
+        return null;
     }
+
+
 }

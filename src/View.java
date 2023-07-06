@@ -5,9 +5,8 @@ public class View {
     private JFrame frame;
     private Model model;
 
-    public View() {
-        config();
-        drawBoard();
+    public View(Model model) {
+        this.model = model;
     }
 
     private void drawBoard() {

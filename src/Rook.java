@@ -1,11 +1,15 @@
+import java.util.List;
+
 public class Rook extends Piece {
 
-    public Rook(int id, boolean isWhite, Coordinate position) {
-        super(id, isWhite, position);
+    public Rook(boolean isWhite) {
+        super(isWhite);
     }
 
     @Override
-    public void takeStep() {
-
+    public List<Coordinate> getAllSteps() {
+        return null;
     }
+
+
 }

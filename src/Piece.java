@@ -1,18 +1,15 @@
 import java.util.List;
 
 public abstract class Piece {
-    private int id;
-    private List<Coordinate> allPossibleSteps;
-    private boolean isWhite;
-    private Coordinate position;
+    private boolean isWhite; // use Color.enum ?
+    private int row;
+    private int column;
 
-    public Piece(int id, boolean isWhite, Coordinate position) {
-        this.id = id;
+    public Piece(boolean isWhite) {
         this.isWhite = isWhite;
-        this.position = position;
     }
 
-    public abstract void takeStep();
+    public abstract List<Coordinate> getAllSteps();
 
 //    public List<HashMap<Integer, Integer>> getPossibleSteps(Model board) {
 //        return possibleSteps;
@@ -22,5 +19,13 @@ public abstract class Piece {
 
     public boolean isWhite() {
         return isWhite;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getColumn() {
+        return column;
     }
 }

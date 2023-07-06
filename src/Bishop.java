@@ -1,11 +1,15 @@
+import java.util.List;
+
 public class Bishop extends Piece {
 
-    public Bishop(int id, boolean isWhite, Coordinate position) {
-        super(id, isWhite, position);
+    public Bishop(boolean isWhite) {
+        super(isWhite);
     }
 
     @Override
-    public void takeStep() {
-
+    public List<Coordinate> getAllSteps() {
+        return null;
     }
+
+
 }
