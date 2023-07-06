@@ -10,16 +10,16 @@ public class GUI {
     }
 
     private void drawBackground() {
-        frame.getContentPane().setBackground(Color.lightGray);
+        frame.getContentPane().setBackground(new Color(0x123456));
+
     }
 
     public void config() {
-        this.frame = new JFrame();
+        this.frame = new JFrame("Ultimate Chess");
         // this exits the program when closing the GUI
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.setTitle("Ultimate Chess");
-        frame.setSize(400, 300);
+        frame.setSize(800, 700);
         frame.setVisible(true);
-            }
+    }
 }
