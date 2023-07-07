@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Piece {
@@ -9,7 +10,7 @@ public abstract class Piece {
         this.isWhite = isWhite;
     }
 
-    public abstract List<Coordinate> getAllSteps();
+    public abstract ArrayList<List<Coordinate>> getAllTrajectories(Coordinate position);
 
 //    public List<HashMap<Integer, Integer>> getPossibleSteps(Model board) {
 //        return possibleSteps;

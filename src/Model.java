@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Model {
@@ -38,12 +39,38 @@ public class Model {
 
     public List<Coordinate> getPossibleActions(Coordinate position) {
         Piece pieceOnSquare = board[position.getRow()][position.getColumn()];
-        if (pieceOnSquare == null) {
+        if (pieceOnSquare == null || !(pieceOnSquare.isWhite())) {
             return null;
         } else {
-            pieceOnSquare.getAllSteps();
+            ArrayList<List<Coordinate>> allTrajectories = pieceOnSquare.getAllTrajectories(position);
+            List<Coordinate> possibleSteps = filterIllegalSteps(allTrajectories);
             // compare to current board to get all actual steps
             return null;
         }
+    }
+
+    private List<Coordinate> filterIllegalSteps(ArrayList<List<Coordinate>> allTrajectories) {
+        List<Coordinate> possibleSteps = new ArrayList<>();
+        for (List<Coordinate> trajectory : allTrajectories) {
+            for (Coordinate coordinate : trajectory) {
+                Boolean hitFirstEnemy = false;
+                if (!coordinateOffBoard(coordinate) || !(coordinateHitsOwnPlayer(coordinate))) {
+                    // hitting open board or (illegal) enemy
+                    System.out.println(coordinate);
+                    possibleSteps.add(coordinate);
+
+                }
+            }
+        }
+        return possibleSteps;
+    }
+
+    private boolean coordinateHitsOwnPlayer(Coordinate coordinate) {
+        Piece piece  = board[coordinate.getRow()][coordinate.getColumn()];
+        return (piece == null || !(piece.isWhite()));
+    }
+
+    private boolean coordinateOffBoard(Coordinate coordinate) {
+        return (coordinate.getRow() < 0 || coordinate.getRow() > 7 || coordinate.getColumn() < 0 || coordinate.getColumn() > 7);
     }
 }

@@ -7,5 +7,8 @@ public class Main {
         Controller controller = new Controller(model, view);
         controller.run();
 
+        // testing
+        model.getPossibleActions(new Coordinate(1, 1));
+
     }
 }

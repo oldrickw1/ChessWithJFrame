@@ -22,4 +22,12 @@ public class Coordinate {
     public void setColumn(int column) {
         this.column = column;
     }
+
+    @Override
+    public String toString() {
+        return "Coordinate{" +
+                "row=" + row +
+                ", column=" + column +
+                '}';
+    }
 }

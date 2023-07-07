@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class King extends Piece{
@@ -6,7 +7,7 @@ public class King extends Piece{
     }
 
     @Override
-    public List<Coordinate> getAllSteps() {
+    public ArrayList<List<Coordinate>> getAllTrajectories(Coordinate position) {
         return null;
     }
 

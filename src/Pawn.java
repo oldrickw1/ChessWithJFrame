@@ -1,16 +1,21 @@
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Pawn extends Piece {
+    private static final String imgPath = "resources/pawn.png";
+    ImageIcon imageIcon = new ImageIcon("resources/pawn.png");
     public Pawn(boolean isWhite) {
         super(isWhite);
     }
 
     @Override
-    public List<Coordinate> getAllSteps() {
+    public ArrayList<List<Coordinate>> getAllTrajectories(Coordinate position) {
         return new ArrayList<>(List.of(
-                new Coordinate(getRow() + 1, getColumn()),
-                new Coordinate(getRow() + 2, getColumn())
+                new ArrayList<>(List.of(
+                        new Coordinate(position.getRow() + 1, position.getColumn()),
+                        new Coordinate(position.getRow() + 2, position.getColumn())
+                ))
         ));
     }
 
