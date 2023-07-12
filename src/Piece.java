@@ -2,9 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Piece {
-    private boolean isWhite; // use Color.enum ?
-    private int row;
-    private int column;
+    private Coordinate coordinate;
+    private boolean isWhite;
 
     public Piece(boolean isWhite) {
         this.isWhite = isWhite;
@@ -12,21 +11,17 @@ public abstract class Piece {
 
     public abstract ArrayList<List<Coordinate>> getAllTrajectories(Coordinate position);
 
-//    public List<HashMap<Integer, Integer>> getPossibleSteps(Model board) {
-//        return possibleSteps;
-//    }
-
-
+    public abstract String getImgPath();
 
     public boolean isWhite() {
         return isWhite;
     }
 
-    public int getRow() {
-        return row;
+    public Coordinate getCoordinate() {
+        return coordinate;
     }
 
-    public int getColumn() {
-        return column;
+    public void setCoordinate(Coordinate coordinate) {
+        this.coordinate = coordinate;
     }
 }

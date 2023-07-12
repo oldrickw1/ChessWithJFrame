@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Coordinate {
     private int row;
     private int column;
@@ -29,5 +31,18 @@ public class Coordinate {
                 "row=" + row +
                 ", column=" + column +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Coordinate other = (Coordinate) obj;
+        return Objects.equals(this.getRow(), other.getRow()) && Objects.equals(this.getColumn(), other.getColumn());
     }
 }

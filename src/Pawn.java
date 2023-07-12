@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pawn extends Piece {
-    private static final String imgPath = "resources/pawn.png";
-    ImageIcon imageIcon = new ImageIcon("resources/pawn.png");
+    private static final String imgPathToWhite = "resources/pawn_white_small.png";
+    private static final String imgPathToBlack = "resources/pawn_black_small.png";
     public Pawn(boolean isWhite) {
         super(isWhite);
     }
@@ -19,5 +19,7 @@ public class Pawn extends Piece {
         ));
     }
 
-
+    public String getImgPath() {
+        return isWhite() ? imgPathToWhite : imgPathToBlack;
+    }
 }

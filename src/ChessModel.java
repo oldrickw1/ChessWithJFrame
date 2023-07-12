@@ -1,15 +1,19 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class Model {
+public class ChessModel {
+    private Piece activePiece;
+
     private Piece[][] board = new Piece[8][8];
 
-    public Model() {
-
+    public ChessModel() {
         populateBoard();
     }
 
+
     private void populateBoard() {
+        // TODO: Swap queen with king
         //White
         board[0][0] = new Rook(true);
         board[0][1] = new Knight( true);
@@ -37,15 +41,29 @@ public class Model {
         board[7][7] = new Rook( false);
     }
 
+    public void makeMove(Coordinate destination) {
+        int destinationRow = destination.getRow();
+        int destinationCol = destination.getColumn();
+        board[activePiece.getCoordinate().getRow()][activePiece.getCoordinate().getColumn()] = null;
+        board[destinationRow][destinationCol] = activePiece;
+    }
+
     public List<Coordinate> getPossibleActions(Coordinate position) {
+        System.out.println("Clicked on position: " + position);
         Piece pieceOnSquare = board[position.getRow()][position.getColumn()];
+
         if (pieceOnSquare == null || !(pieceOnSquare.isWhite())) {
             return null;
         } else {
             ArrayList<List<Coordinate>> allTrajectories = pieceOnSquare.getAllTrajectories(position);
+            System.out.println("All Trajectories: ");
+            for (List<Coordinate> trajectory : allTrajectories) {
+                for (Coordinate coordinate : trajectory) {
+                    System.out.println(coordinate);
+                }
+            }
             List<Coordinate> possibleSteps = filterIllegalSteps(allTrajectories);
-            // compare to current board to get all actual steps
-            return null;
+            return possibleSteps;
         }
     }
 
@@ -54,9 +72,9 @@ public class Model {
         for (List<Coordinate> trajectory : allTrajectories) {
             for (Coordinate coordinate : trajectory) {
                 Boolean hitFirstEnemy = false;
-                if (!coordinateOffBoard(coordinate) || !(coordinateHitsOwnPlayer(coordinate))) {
-                    // hitting open board or (illegal) enemy
-                    System.out.println(coordinate);
+                if (!(coordinateOffBoard(coordinate))) {
+
+                    // todo: Filter out illegal enemy steps
                     possibleSteps.add(coordinate);
 
                 }
@@ -71,6 +89,20 @@ public class Model {
     }
 
     private boolean coordinateOffBoard(Coordinate coordinate) {
-        return (coordinate.getRow() < 0 || coordinate.getRow() > 7 || coordinate.getColumn() < 0 || coordinate.getColumn() > 7);
+        int row = coordinate.getRow();
+        int col = coordinate.getColumn();
+        return ((row < 0 || row > 7) || (col < 0 || col > 7));
+    }
+
+    public Piece[][] getBoard() {
+        return board;
+    }
+
+    public Piece getActivePiece() {
+        return activePiece;
+    }
+
+    public void setActivePiece(Piece activePiece) {
+        this.activePiece = activePiece;
     }
 }
