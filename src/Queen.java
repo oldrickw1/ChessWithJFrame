@@ -9,7 +9,7 @@ public class Queen extends Piece{
     }
 
     @Override
-    public ArrayList<List<Coordinate>> getAllTrajectories(Coordinate position) {
+    public ArrayList<List<Coordinate>> getAllTrajectories() {
         return null;
     }
 

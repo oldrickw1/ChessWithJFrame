@@ -10,11 +10,11 @@ public class Pawn extends Piece {
     }
 
     @Override
-    public ArrayList<List<Coordinate>> getAllTrajectories(Coordinate position) {
+    public ArrayList<List<Coordinate>> getAllTrajectories() {
         return new ArrayList<>(List.of(
                 new ArrayList<>(List.of(
-                        new Coordinate(position.getRow() + 1, position.getColumn()),
-                        new Coordinate(position.getRow() + 2, position.getColumn())
+                        new Coordinate(getCoordinate().getRow() + 1, getCoordinate().getColumn()),
+                        new Coordinate(getCoordinate().getRow() + 2, getCoordinate().getColumn())
                 ))
         ));
     }

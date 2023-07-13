@@ -11,16 +11,23 @@ public class ChessController {
 
 
     public void run() {
-        theView.setSquareListener(squareListener);
+        theView.setSquares(squareListener);
+        theView.setPieces(theModel.getPieces());
     }
 
     private ActionListener squareListener = (e -> {
         try {
             Square square = (Square) e.getSource();
+            Piece piece = square.getPiece();
             if (square.isLit()) {
-
+                theModel.makeMove(square.getPosition());
+                theView.setPieces(theModel.getPieces());
+                theView.dimSquares();
+            } else if (piece != null && piece.isWhite()) {
+                theView.dimSquares();
+                theModel.setActiveSquare(square);
+                theModel.getPossibleActions(piece, square.getPosition()).forEach(theView::lightUpSquare);
             }
-
         } catch (Exception exception) {
             theView.displayErrorMessage("Something went wrong");
             exception.printStackTrace();

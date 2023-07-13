@@ -2,14 +2,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Piece {
-    private Coordinate coordinate;
+    private boolean isAlive;
     private boolean isWhite;
 
     public Piece(boolean isWhite) {
+        isAlive = true;
         this.isWhite = isWhite;
     }
 
-    public abstract ArrayList<List<Coordinate>> getAllTrajectories(Coordinate position);
+    public abstract ArrayList<List<Coordinate>> getAllTrajectories();
 
     public abstract String getImgPath();
 
@@ -17,11 +18,13 @@ public abstract class Piece {
         return isWhite;
     }
 
-    public Coordinate getCoordinate() {
-        return coordinate;
+
+
+    public boolean isAlive() {
+        return isAlive;
     }
 
-    public void setCoordinate(Coordinate coordinate) {
-        this.coordinate = coordinate;
+    public void setAlive(boolean alive) {
+        isAlive = alive;
     }
 }
